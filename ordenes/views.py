@@ -1,25 +1,36 @@
-from django.views import View
-from django.http import JsonResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status, generics
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
 
-from .models import Carrito
+from .models import Carrito, Instrumento
+from .serializers import InstrumentoSerializer, OrdenInputSerializer, OrdenOutputSerializer
 from .services import OrdenService
-from .domain.orden_builder import OrdenInvalidaError
+from .domain.orden_builder import OrdenInvalidaError, InstrumentoNoDisponibleError
 
 
-@method_decorator(login_required, name="dispatch")
-class CrearOrdenView(View):
+class InstrumentoListCreateView(generics.ListCreateAPIView):
+    queryset = Instrumento.objects.all()
+    serializer_class = InstrumentoSerializer
+
+
+class CrearOrdenView(APIView):
     def post(self, request):
+        input_serializer = OrdenInputSerializer(data=request.data)
+        if not input_serializer.is_valid():
+            return Response(input_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
         carrito = get_object_or_404(Carrito, comprador=request.user)
-        service = OrdenService()
+
         try:
-            orden = service.crear_orden_desde_carrito(
+            orden = OrdenService().crear_orden_desde_carrito(
                 comprador=request.user,
                 carrito=carrito,
-                direccion_envio=request.POST.get("direccion"),
+                direccion_envio=input_serializer.validated_data["direccion_envio"],
             )
-            return JsonResponse({"ok": True, "total": str(orden.total)})
+        except InstrumentoNoDisponibleError as e:
+            return Response({"error": str(e)}, status=status.HTTP_409_CONFLICT)
         except OrdenInvalidaError as e:
-            return JsonResponse({"ok": False, "error": str(e)}, status=400)
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(OrdenOutputSerializer(orden).data, status=status.HTTP_201_CREATED)
