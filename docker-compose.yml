@@ -1,0 +1,58 @@
+# docker-compose.yml - Topología híbrida (Strangler Pattern)
+# Levanta: Nginx (gateway) + Django (monolito) + Flask (microservicio pagos) + PostgreSQL (BD)
+
+services:
+  # Base de datos del monolito
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: afinamercado
+      POSTGRES_USER: afinamercado
+      POSTGRES_PASSWORD: afinamercado
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U afinamercado"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Monolito Django (rutas legacy /api/v1/)
+  django_web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_ENGINE: postgres
+      DB_NAME: afinamercado
+      DB_USER: afinamercado
+      DB_PASSWORD: afinamercado
+      DB_HOST: db
+      DB_PORT: "5432"
+    depends_on:
+      db:
+        condition: service_healthy
+    expose:
+      - "8000"
+
+  # Microservicio NUEVO: Procesamiento de Pagos (Flask) -> /api/v2/pagos/
+  flask_pago_service:
+    build:
+      context: ./pago_service
+      dockerfile: Dockerfile
+    expose:
+      - "5000"
+
+  # Gateway / Orquestador de tráfico
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - django_web
+      - flask_pago_service
+
+volumes:
+  postgres_data:
