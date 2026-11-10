@@ -1,0 +1,530 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:  AfinaMercado\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-10 17:27-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: AfinaMercado\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+msgid "Español"
+msgstr "Spanish"
+
+msgid "Inglés"
+msgstr "English"
+
+#, python-format
+msgid "El instrumento %(marca)s %(modelo)s ya no está disponible."
+msgstr "The instrument %(marca)s %(modelo)s is no longer available."
+
+msgid "La orden necesita un comprador."
+msgstr "The order needs a buyer."
+
+msgid "La orden necesita al menos una línea de compra."
+msgstr "The order needs at least one item."
+
+msgid "La orden necesita una dirección de envío."
+msgstr "The order needs a shipping address."
+
+msgid "Excelente"
+msgstr "Excellent"
+
+msgid "Bueno"
+msgstr "Good"
+
+msgid "Regular"
+msgstr "Fair"
+
+msgid "Disponible"
+msgstr "Available"
+
+msgid "Vendido"
+msgstr "Sold"
+
+msgid "Creada"
+msgstr "Created"
+
+msgid "Pagada"
+msgstr "Paid"
+
+msgid "Cancelada"
+msgstr "Cancelled"
+
+msgid "Tarjeta"
+msgstr "Card"
+
+msgid "Transferencia"
+msgstr "Transfer"
+
+msgid "Pendiente"
+msgstr "Pending"
+
+msgid "En camino"
+msgstr "On the way"
+
+msgid "Entregado"
+msgstr "Delivered"
+
+msgid "Interfaz web"
+msgstr "Web interface"
+
+msgid "Tarjeta de crédito/débito"
+msgstr "Credit/debit card"
+
+msgid "Transferencia bancaria"
+msgstr "Bank transfer"
+
+msgid "PSE"
+msgstr "PSE"
+
+msgid "Nequi"
+msgstr "Nequi"
+
+msgid "Buscar"
+msgstr "Search"
+
+msgid "Marca o modelo, ej. Yamaha"
+msgstr "Brand or model, e.g. Yamaha"
+
+msgid "Categoría"
+msgstr "Category"
+
+msgid "Todas las categorías"
+msgstr "All categories"
+
+msgid "Marca"
+msgstr "Brand"
+
+msgid "Modelo"
+msgstr "Model"
+
+msgid "Precio (COP)"
+msgstr "Price (COP)"
+
+msgid "Precio en pesos colombianos, sin puntos ni comas."
+msgstr "Price in Colombian pesos, without dots or commas."
+
+msgid "Condición"
+msgstr "Condition"
+
+msgid "Descripción"
+msgstr "Description"
+
+msgid "Opcional. Cuenta el estado, accesorios incluidos, etc."
+msgstr "Optional. Describe its condition, included accessories, etc."
+
+msgid "Selecciona una categoría"
+msgstr "Select a category"
+
+msgid "Dirección de envío"
+msgstr "Shipping address"
+
+msgid "Ej. Calle 10 # 20-30, Medellín"
+msgstr "E.g. Calle 10 # 20-30, Medellín"
+
+msgid "Método de pago"
+msgstr "Payment method"
+
+msgid "Correo para la confirmación"
+msgstr "Email for the confirmation"
+
+msgid "Te enviaremos el resumen de la compra en segundo plano."
+msgstr "We will send you the purchase summary in the background."
+
+msgid "Correo electrónico"
+msgstr "Email"
+
+msgid "Ya existe una cuenta con este correo."
+msgstr "An account with this email already exists."
+
+#, python-format
+msgid "El servicio de %(servicio)s no está disponible en este momento."
+msgstr "The %(servicio)s service is not available right now."
+
+msgid "Error inesperado."
+msgstr "Unexpected error."
+
+msgid "carrito"
+msgstr "cart"
+
+msgid "catálogo"
+msgstr "catalog"
+
+msgid "órdenes"
+msgstr "orders"
+
+msgid "Acceso denegado"
+msgstr "Access denied"
+
+msgid "No tienes permiso para ver esta página"
+msgstr "You do not have permission to view this page"
+
+msgid "Ir al catálogo"
+msgstr "Go to the catalog"
+
+msgid "Página no encontrada"
+msgstr "Page not found"
+
+msgid "No encontramos lo que buscas"
+msgstr "We could not find what you are looking for"
+
+msgid "Es posible que el enlace esté mal escrito o que el contenido ya no exista."
+msgstr "The link may be misspelled or the content may no longer exist."
+
+msgid "Algo salió mal de nuestro lado"
+msgstr "Something went wrong on our side"
+
+msgid "Ya registramos el error. Intenta de nuevo en unos minutos."
+msgstr "We have logged the error. Please try again in a few minutes."
+
+msgid "Revisa los campos marcados."
+msgstr "Please check the highlighted fields."
+
+msgid "Ver detalle"
+msgstr "View details"
+
+msgid "Equipo aliado"
+msgstr "Partner team"
+
+msgid "Servicio del equipo aliado"
+msgstr "Partner team service"
+
+msgid "Información que consumimos en tiempo real desde la API del equipo aliado."
+msgstr "Information we consume in real time from the partner team's API."
+
+msgid "El servicio del equipo aliado aún no está configurado."
+msgstr "The partner team service is not configured yet."
+
+msgid ""
+"El servicio del equipo aliado no respondió. El resto de AfinaMercado sigue funcionando con "
+"normalidad."
+msgstr "The partner team service did not respond. The rest of AfinaMercado keeps working normally."
+
+#, python-format
+msgid "%(total)s registro recibido."
+msgid_plural "%(total)s registros recibidos."
+msgstr[0] "%(total)s record received."
+msgstr[1] "%(total)s records received."
+
+msgid "El aliado no devolvió registros."
+msgstr "The partner returned no records."
+
+msgid "Marketplace de instrumentos"
+msgstr "Instrument marketplace"
+
+msgid "Saltar al contenido"
+msgstr "Skip to content"
+
+msgid "Navegación principal"
+msgstr "Main navigation"
+
+msgid "Abrir menú"
+msgstr "Open menu"
+
+msgid "Catálogo"
+msgstr "Catalog"
+
+msgid "Vender"
+msgstr "Sell"
+
+msgid "Mis publicaciones"
+msgstr "My listings"
+
+msgid "Mis compras"
+msgstr "My purchases"
+
+msgid "Reportes"
+msgstr "Reports"
+
+msgid "Carrito"
+msgstr "Cart"
+
+msgid "instrumentos en el carrito"
+msgstr "instruments in the cart"
+
+#, python-format
+msgid "Hola, %(nombre)s"
+msgstr "Hi, %(nombre)s"
+
+msgid "Salir"
+msgstr "Log out"
+
+msgid "Ingresar"
+msgstr "Log in"
+
+msgid "Crear cuenta"
+msgstr "Sign up"
+
+msgid "Idioma"
+msgstr "Language"
+
+msgid "Cambiar"
+msgstr "Change"
+
+msgid "Cerrar"
+msgstr "Close"
+
+msgid "Arquitectura de Software 2026"
+msgstr "Software Architecture 2026"
+
+msgid "Tasas de cambio:"
+msgstr "Exchange rates:"
+
+msgid "Tu carrito"
+msgstr "Your cart"
+
+msgid "Instrumentos en tu carrito"
+msgstr "Instruments in your cart"
+
+msgid "Instrumento"
+msgstr "Instrument"
+
+msgid "Acciones"
+msgstr "Actions"
+
+msgid "¿Quitar este instrumento del carrito?"
+msgstr "Remove this instrument from the cart?"
+
+msgid "Quitar"
+msgstr "Remove"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Seguir comprando"
+msgstr "Keep shopping"
+
+msgid "Continuar con el pago"
+msgstr "Proceed to checkout"
+
+msgid "Tu carrito está vacío."
+msgstr "Your cart is empty."
+
+msgid "Explorar el catálogo"
+msgstr "Browse the catalog"
+
+msgid "Instrumentos disponibles"
+msgstr "Available instruments"
+
+msgid "Compra y vende instrumentos musicales usados de forma segura."
+msgstr "Buy and sell used musical instruments safely."
+
+msgid "Publicar un instrumento"
+msgstr "List an instrument"
+
+msgid "Filtrar"
+msgstr "Filter"
+
+msgid "Quitar filtros"
+msgstr "Clear filters"
+
+#, python-format
+msgid "%(total)s instrumento encontrado"
+msgid_plural "%(total)s instrumentos encontrados"
+msgstr[0] "%(total)s instrument found"
+msgstr[1] "%(total)s instruments found"
+
+msgid "No encontramos instrumentos con esos filtros."
+msgstr "We found no instruments with those filters."
+
+msgid "Ver todo el catálogo"
+msgstr "See the whole catalog"
+
+msgid "Pagar"
+msgstr "Pay"
+
+msgid "Ruta de navegación"
+msgstr "Breadcrumb"
+
+msgid "Pago y envío"
+msgstr "Payment and shipping"
+
+msgid "Procesando el pago…"
+msgstr "Processing payment…"
+
+#, python-format
+msgid "Pagar $ %(total)s COP"
+msgstr "Pay $ %(total)s COP"
+
+msgid "Resumen"
+msgstr "Summary"
+
+msgid "Vendedor"
+msgstr "Seller"
+
+msgid "Publicado"
+msgstr "Listed"
+
+msgid "tasa del día"
+msgstr "today's rate"
+
+msgid "Precio en dólares no disponible en este momento."
+msgstr "Price in dollars is not available right now."
+
+msgid "Este instrumento ya fue vendido."
+msgstr "This instrument has already been sold."
+
+msgid "Esta es una de tus publicaciones."
+msgstr "This is one of your listings."
+
+msgid "Agregando…"
+msgstr "Adding…"
+
+msgid "Agregar al carrito"
+msgstr "Add to cart"
+
+msgid "Inicia sesión para comprar"
+msgstr "Log in to buy"
+
+msgid "¿No tienes cuenta?"
+msgstr "Don't have an account?"
+
+msgid "Todavía no has publicado instrumentos."
+msgstr "You have not listed any instruments yet."
+
+#, python-format
+msgid "Orden #%(id)s"
+msgstr "Order #%(id)s"
+
+msgid "Motivo:"
+msgstr "Reason:"
+
+msgid "Fecha"
+msgstr "Date"
+
+msgid "Transacción"
+msgstr "Transaction"
+
+msgid "Dirección"
+msgstr "Address"
+
+msgid "Envío"
+msgstr "Shipping"
+
+msgid "Asegurado"
+msgstr "Insured"
+
+msgid "Orden"
+msgstr "Order"
+
+msgid "Estado"
+msgstr "Status"
+
+msgid "Total (COP)"
+msgstr "Total (COP)"
+
+msgid "Aún no tienes compras."
+msgstr "You have no purchases yet."
+
+msgid "Los campos marcados con * son obligatorios."
+msgstr "Fields marked with * are required."
+
+msgid "Publicando…"
+msgstr "Publishing…"
+
+msgid "Publicar"
+msgstr "Publish"
+
+msgid "Cancelar"
+msgstr "Cancel"
+
+msgid "¿Ya tienes cuenta?"
+msgstr "Already have an account?"
+
+msgid "Reporte de ventas"
+msgstr "Sales report"
+
+msgid "Tarea"
+msgstr "Task"
+
+msgid "Generado:"
+msgstr "Generated:"
+
+msgid "Órdenes pagadas"
+msgstr "Paid orders"
+
+msgid "Ingresos (COP)"
+msgstr "Revenue (COP)"
+
+msgid "Ticket promedio (COP)"
+msgstr "Average ticket (COP)"
+
+msgid "Ventas por categoría"
+msgstr "Sales by category"
+
+msgid "Unidades"
+msgstr "Units"
+
+msgid "Sin ventas todavía."
+msgstr "No sales yet."
+
+msgid "Ventas por método de pago"
+msgstr "Sales by payment method"
+
+msgid "Método"
+msgstr "Method"
+
+msgid "Órdenes"
+msgstr "Orders"
+
+msgid "Generar otro reporte"
+msgstr "Generate another report"
+
+msgid "No se pudo generar el reporte. Intenta de nuevo más tarde."
+msgstr "The report could not be generated. Please try again later."
+
+msgid "Volver"
+msgstr "Back"
+
+msgid "Procesando el reporte en segundo plano… esta página se actualiza sola."
+msgstr "Processing the report in the background… this page refreshes itself."
+
+msgid "El reporte se calcula en segundo plano (Celery + Redis), así que no bloquea la aplicación."
+msgstr "The report is calculated in the background (Celery + Redis), so it does not block the application."
+
+msgid "Enviando…"
+msgstr "Sending…"
+
+msgid "Generar reporte"
+msgstr "Generate report"
+
+msgid "El catálogo no está disponible en este momento. Intenta de nuevo en unos minutos."
+msgstr "The catalog is not available right now. Please try again in a few minutes."
+
+msgid "¡Tu instrumento quedó publicado!"
+msgstr "Your instrument has been listed!"
+
+msgid "Instrumento agregado a tu carrito."
+msgstr "Instrument added to your cart."
+
+msgid "Instrumento eliminado del carrito."
+msgstr "Instrument removed from the cart."
+
+#, python-format
+msgid "¡Compra realizada! Tu orden #%(id)s quedó pagada."
+msgstr "Purchase completed! Your order #%(id)s has been paid."
+
+msgid "Estamos enviando la confirmación a tu correo en segundo plano."
+msgstr "We are sending the confirmation to your email in the background."
+
+msgid "El sistema de tareas en segundo plano no está disponible."
+msgstr "The background task system is not available."
+
+msgid "Generando el reporte en segundo plano. Puedes seguir navegando."
+msgstr "Generating the report in the background. You can keep browsing."
+
+#, python-format
+msgid "¡Bienvenido a AfinaMercado, %(nombre)s!"
+msgstr "Welcome to AfinaMercado, %(nombre)s!"
+
