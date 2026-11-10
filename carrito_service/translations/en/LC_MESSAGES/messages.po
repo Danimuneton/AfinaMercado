@@ -1,0 +1,76 @@
+# English translations for AfinaMercado.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the AfinaMercado
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AfinaMercado VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-10 22:36+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+msgid "Falta la cabecera X-Usuario-Id."
+msgstr "The X-Usuario-Id header is missing."
+
+msgid "El catálogo no está disponible en este momento."
+msgstr "The catalog is not available right now."
+
+#, python-format
+msgid "El instrumento %(id)s no existe."
+msgstr "Instrument %(id)s does not exist."
+
+msgid "El catálogo respondió con un error."
+msgstr "The catalog responded with an error."
+
+msgid "Datos inválidos."
+msgstr "Invalid data."
+
+msgid "Debe ser un número entero."
+msgstr "Must be an integer."
+
+msgid "Este instrumento ya está en tu carrito."
+msgstr "This instrument is already in your cart."
+
+msgid "Este instrumento ya fue vendido."
+msgstr "This instrument has already been sold."
+
+msgid "No puedes comprar un instrumento que tú publicaste."
+msgstr "You cannot buy an instrument you listed."
+
+msgid "Ese instrumento no está en tu carrito."
+msgstr "That instrument is not in your cart."
+
+msgid "El cuerpo de la petición debe ser un objeto JSON."
+msgstr "The request body must be a JSON object."
+
+msgid "Token de servicio inválido o ausente."
+msgstr "Invalid or missing service token."
+
+msgid "Solicitud inválida."
+msgstr "Invalid request."
+
+msgid "Recurso no encontrado."
+msgstr "Resource not found."
+
+msgid "Método HTTP no permitido en esta ruta."
+msgstr "HTTP method not allowed on this route."
+
+msgid "El contenido debe enviarse como JSON."
+msgstr "The content must be sent as JSON."
+
+msgid "Error en la solicitud."
+msgstr "Request error."
+
+msgid "Ocurrió un error inesperado en el servicio."
+msgstr "An unexpected error occurred in the service."
+
