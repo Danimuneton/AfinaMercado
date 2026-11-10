@@ -1,58 +1,76 @@
-# AfinaMercado — Marketplace de Instrumentos
+# AfinaMercado: marketplace de instrumentos musicales
 
-Proyecto de la materia **Arquitectura de Software 2026**.
+Proyecto de la materia **Arquitectura de Software 2026** (EAFIT).
 
-## Taller 02 — Patrón Estrangulador (Strangler Pattern)
+Ecosistema híbrido construido con el **Strangler Pattern**: Django mantiene la interfaz web y la
+autenticación, y la lógica de negocio vive en microservicios Flask independientes, detrás de Nginx
+como API Gateway, con tareas asíncronas en Celery + Redis y soporte bilingüe (español / inglés).
 
-Migración híbrida de monolito a microservicios. Se extrajo el **procesamiento de
-pagos** del monolito Django a un microservicio independiente en **Flask**, orquestando
-el tráfico con **Nginx** y **Docker**.
+Documentación detallada en la **Wiki** del repositorio y en [`docs/`](docs/):
 
-La justificación completa (matriz de decisión + diagrama) está en:
-[`docs/wiki/Migracion-a-Microservicios-Strangler-Pattern.md`](docs/wiki/Migracion-a-Microservicios-Strangler-Pattern.md)
-(contenido listo para copiar a la Wiki del repositorio).
+- [Entrega 2: Microservicios, integración y resiliencia](docs/wiki/Entrega-2-Microservicios-Integracion-y-Resiliencia.md) (arquitectura, matriz de decisión, diagramas)
+- [Taller 2: Strangler Pattern](docs/wiki/Migracion-a-Microservicios-Strangler-Pattern.md)
+- [Despliegue en AWS Academy (EC2)](docs/DESPLIEGUE_AWS.md)
+- [API pública para el equipo aliado](docs/API_PUBLICA.md)
 
 ## Arquitectura
 
 ```
-Cliente ──> Nginx (:8080)
-              ├── /api/v1/…        ──> Django (monolito)      ──> PostgreSQL
-              └── /api/v2/pagos/   ──> Flask (microservicio de pagos)
+                       ┌──────────────────────── Docker Compose (AWS EC2) ───────────────────────┐
+Usuario ── HTTP :80 ──▶│ Nginx (API Gateway)                                                     │
+                       │   ├── /, /admin/, /api/v1/ ─▶ Django (web, auth, i18n, Adapter) ─┐      │
+                       │   ├── /api/v2/catalogo/    ─▶ Flask catalogo_service             │      │
+                       │   ├── /api/v2/carrito/     ─▶ Flask carrito_service              ├─▶ PostgreSQL
+                       │   ├── /api/v2/ordenes/     ─▶ Flask ordenes_service ──┐          │   (1 BD por servicio)
+                       │   └── /api/v2/pagos/       ─▶ Flask pago_service      │          │      │
+                       │                                                       ▼          │      │
+                       │                         Redis (broker) ─▶ Celery notificaciones_worker  │
+                       └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-- **Monolito Django** (`ordenes/`): catálogo, vendedores, categorías, carrito y órdenes.
-- **Microservicio Flask** (`pago_service/`): procesa pagos y responde JSON.
-- **Nginx** (`nginx/nginx.conf`): bifurca el tráfico por URL.
-- **PostgreSQL**: base de datos del monolito.
+| Carpeta | Servicio | Descripción |
+|---|---|---|
+| `web/` + `afinamercado_project/` | Django | Interfaz web, autenticación, i18n, integraciones (divisas y aliado con patrón Adapter) |
+| `ordenes/` | Django | API legacy `/api/v1/` (se conserva por compatibilidad) |
+| `catalogo_service/` | Flask | Vendedores, categorías, instrumentos, API pública |
+| `carrito_service/` | Flask | Carrito de compras |
+| `ordenes_service/` | Flask | Órdenes y envíos (Builder), coordinación de la compra |
+| `pago_service/` | Flask | Pagos |
+| `notificaciones_service/` | Celery | Notificaciones (Factory) y reportes asíncronos |
+| `nginx/` | Nginx | Configuración del API Gateway |
+| `locale/` | gettext | Traducciones de Django (es / en) |
 
-## Ejecución con Docker
+## Ejecutar en tu PC (Windows PowerShell)
 
-```bash
-docker compose up --build
+Requisito: Docker Desktop abierto.
+
+```powershell
+Copy-Item .env.example .env
+# Edita .env y cambia las claves (DJANGO_SECRET_KEY, POSTGRES_PASSWORD, SERVICE_TOKEN, DJANGO_SUPERUSER_PASSWORD)
+docker compose up -d --build
+Start-Process "http://localhost:8080/"
 ```
 
-Todo queda accesible en `http://localhost:8080`.
+- Interfaz web: `http://localhost:8080/`
+- Administración: `http://localhost:8080/admin/` (usuario `DJANGO_SUPERUSER_USERNAME` del `.env`)
+- Índice del gateway: `http://localhost:8080/api/v2/`
+- API pública: `http://localhost:8080/api/v2/catalogo/publico/instrumentos`
 
-### Endpoints principales
+Si antes levantaste la versión del Taller 2, borra el volumen viejo de la base de datos una vez
+(se pierden esos datos de prueba): `docker compose down -v`.
 
-| Método | Ruta                         | Servicio |
-|--------|------------------------------|----------|
-| GET    | `/api/v1/instrumentos/`      | Django   |
-| POST   | `/api/v1/instrumentos/`      | Django   |
-| GET    | `/api/v1/vendedores/`        | Django   |
-| GET    | `/api/v1/categorias/`        | Django   |
-| GET    | `/api/v1/carrito/`           | Django   |
-| POST   | `/api/v1/carrito/items/`     | Django   |
-| GET    | `/api/v1/ordenes/`           | Django   |
-| POST   | `/api/v1/crear-orden/`       | Django (delega el pago a Flask) |
-| POST   | `/api/v2/pagos/`             | Flask    |
+## Endpoints principales
 
-## Ejecución local sin Docker (solo Django)
+| Método | Ruta | Servicio |
+|---|---|---|
+| GET | `/api/v2/catalogo/instrumentos?q=&categoria_id=` | Catálogo |
+| GET | `/api/v2/catalogo/instrumentos/<id>` | Catálogo |
+| GET | `/api/v2/catalogo/categorias` | Catálogo |
+| GET | `/api/v2/catalogo/publico/instrumentos` | Catálogo (público, para el aliado) |
+| GET / POST / DELETE | `/api/v2/carrito/`, `/api/v2/carrito/items` | Carrito (token interno) |
+| GET / POST | `/api/v2/ordenes/` | Órdenes (token interno) |
+| POST / GET | `/api/v2/pagos/` | Pagos |
+| GET | `/api/v1/instrumentos/` | Django (legacy) |
 
-```bash
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
-
-Sin la variable `DB_ENGINE=postgres`, Django usa SQLite local.
+Los endpoints marcados con *token interno* exigen la cabecera `X-Service-Token`. Los llama Django
+en nombre del usuario que inició sesión.
