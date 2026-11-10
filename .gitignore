@@ -1,4 +1,13 @@
 __pycache__/
 *.pyc
 db.sqlite3
+*.db
 .DS_Store
+
+# Secretos y configuración local
+.env
+
+# Archivos generados
+staticfiles/
+venv/
+.venv/
