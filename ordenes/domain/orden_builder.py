@@ -1,3 +1,6 @@
+from django.utils.translation import gettext as _
+
+
 class OrdenInvalidaError(Exception):
     """Datos incompletos o inválidos para crear la orden (HTTP 400)."""
     pass
@@ -29,7 +32,8 @@ class OrdenBuilder:
             instrumento = item.instrumento
             if instrumento.estado_venta == "vendido":
                 raise InstrumentoNoDisponibleError(
-                    f"El instrumento {instrumento.marca} {instrumento.modelo} ya no está disponible."
+                    _("El instrumento %(marca)s %(modelo)s ya no está disponible.")
+                    % {"marca": instrumento.marca, "modelo": instrumento.modelo}
                 )
             self._lineas.append({"instrumento": instrumento, "precio_final": instrumento.precio_base})
             self._instrumentos_a_marcar.append(instrumento)
@@ -41,11 +45,11 @@ class OrdenBuilder:
 
     def build(self):
         if not self._comprador:
-            raise OrdenInvalidaError("La orden necesita un comprador.")
+            raise OrdenInvalidaError(_("La orden necesita un comprador."))
         if not self._lineas:
-            raise OrdenInvalidaError("La orden necesita al menos una línea de compra.")
+            raise OrdenInvalidaError(_("La orden necesita al menos una línea de compra."))
         if not self._envio_direccion:
-            raise OrdenInvalidaError("La orden necesita una dirección de envío.")
+            raise OrdenInvalidaError(_("La orden necesita una dirección de envío."))
 
         total = sum(l["precio_final"] for l in self._lineas)
 

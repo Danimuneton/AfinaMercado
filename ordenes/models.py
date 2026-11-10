@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
+from django.utils.translation import gettext_lazy as _
 
 
 class Vendedor(models.Model):
@@ -20,13 +21,13 @@ class Categoria(models.Model):
 
 class Instrumento(models.Model):
     ESTADOS_CONDICION = [
-        ("excelente", "Excelente"),
-        ("bueno", "Bueno"),
-        ("regular", "Regular"),
+        ("excelente", _("Excelente")),
+        ("bueno", _("Bueno")),
+        ("regular", _("Regular")),
     ]
     ESTADOS_VENTA = [
-        ("disponible", "Disponible"),
-        ("vendido", "Vendido"),
+        ("disponible", _("Disponible")),
+        ("vendido", _("Vendido")),
     ]
 
     vendedor = models.ForeignKey(Vendedor, related_name="instrumentos", on_delete=models.CASCADE)
@@ -53,9 +54,9 @@ class ItemCarrito(models.Model):
 
 class Orden(models.Model):
     ESTADOS = [
-        ("creada", "Creada"),
-        ("pagada", "Pagada"),
-        ("cancelada", "Cancelada"),
+        ("creada", _("Creada")),
+        ("pagada", _("Pagada")),
+        ("cancelada", _("Cancelada")),
     ]
     comprador = models.ForeignKey(User, related_name="ordenes", on_delete=models.CASCADE)
     fecha = models.DateTimeField(auto_now_add=True)
@@ -74,14 +75,14 @@ class LineaOrden(models.Model):
 
 
 class Pago(models.Model):
-    METODOS = [("tarjeta", "Tarjeta"), ("transferencia", "Transferencia")]
+    METODOS = [("tarjeta", _("Tarjeta")), ("transferencia", _("Transferencia"))]
     orden = models.OneToOneField(Orden, related_name="pago", on_delete=models.CASCADE)
     monto = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
     metodo = models.CharField(max_length=20, choices=METODOS, default="tarjeta")
 
 
 class Envio(models.Model):
-    ESTADOS = [("pendiente", "Pendiente"), ("en_camino", "En camino"), ("entregado", "Entregado")]
+    ESTADOS = [("pendiente", _("Pendiente")), ("en_camino", _("En camino")), ("entregado", _("Entregado"))]
     orden = models.OneToOneField(Orden, related_name="envio", on_delete=models.CASCADE)
     direccion = models.CharField(max_length=255)
     estado = models.CharField(max_length=20, choices=ESTADOS, default="pendiente")
