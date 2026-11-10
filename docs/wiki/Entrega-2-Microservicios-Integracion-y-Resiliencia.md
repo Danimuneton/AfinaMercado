@@ -7,7 +7,7 @@ una instancia **EC2 de AWS Academy**.
 
 - Guía de despliegue: [`docs/DESPLIEGUE_AWS.md`](https://github.com/Danimuneton/AfinaMercado/blob/main/docs/DESPLIEGUE_AWS.md)
 - Contrato de la API pública: [`docs/API_PUBLICA.md`](https://github.com/Danimuneton/AfinaMercado/blob/main/docs/API_PUBLICA.md)
-- Antecedente: [Migración a Microservicios (Strangler Pattern) - Taller 2](Migración-a-Microservicios-(Strangler-Pattern)--Taller-2)
+- Antecedente: [Migración a Microservicios (Strangler Pattern) - Taller 2](https://github.com/Danimuneton/AfinaMercado/wiki/Migraci%C3%B3n-a-Microservicios-%28Strangler-Pattern%29--Taller-2)
 
 ---
 
