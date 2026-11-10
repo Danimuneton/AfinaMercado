@@ -1,0 +1,18 @@
+{% load i18n %}<div class="mb-3">
+  {% if campo.field.widget.input_type == "radio" %}
+  <fieldset{% if campo.errors %} aria-describedby="{{ campo.auto_id }}_error"{% endif %}>
+    <legend class="form-label fs-6">{{ campo.label }}{% if campo.field.required %} <span class="text-danger" aria-hidden="true">*</span>{% endif %}</legend>
+    {% for opcion in campo %}
+    <div class="form-check">
+      {{ opcion.tag }}
+      <label class="form-check-label" for="{{ opcion.id_for_label }}">{{ opcion.choice_label }}</label>
+    </div>
+    {% endfor %}
+  </fieldset>
+  {% else %}
+  <label class="form-label" for="{{ campo.id_for_label }}">{{ campo.label }}{% if campo.field.required %} <span class="text-danger" aria-hidden="true">*</span>{% endif %}</label>
+  {{ campo }}
+  {% endif %}
+  {% if campo.help_text %}<div class="form-text" id="{{ campo.auto_id }}_ayuda">{{ campo.help_text|safe }}</div>{% endif %}
+  {% for error in campo.errors %}<div class="invalid-feedback d-block" id="{{ campo.auto_id }}_error">{{ error }}</div>{% endfor %}
+</div>

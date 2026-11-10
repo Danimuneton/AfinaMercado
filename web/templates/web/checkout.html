@@ -1,0 +1,38 @@
+{% extends "web/base.html" %}
+{% load i18n web_extras %}
+{% block titulo %}{% translate "Pagar" %}{% endblock %}
+{% block migas %}
+<nav aria-label="{% translate 'Ruta de navegación' %}">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'web:carrito' %}">{% translate "Carrito" %}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{% translate "Pago y envío" %}</li>
+  </ol>
+</nav>
+{% endblock %}
+{% block contenido %}
+<div class="row g-4">
+  <div class="col-lg-7">
+    <h1 class="h3">{% translate "Pago y envío" %}</h1>
+    {% include "web/_errores_form.html" %}
+    <form method="post" novalidate data-un-envio>{% csrf_token %}
+      {% include "web/_campo.html" with campo=form.direccion_envio %}
+      {% include "web/_campo.html" with campo=form.metodo_pago %}
+      {% include "web/_campo.html" with campo=form.email %}
+      <button type="submit" class="btn btn-warning btn-lg" data-texto-enviando="{% translate 'Procesando el pago…' %}">
+        {% blocktranslate with total=carrito.total|moneda %}Pagar $ {{ total }} COP{% endblocktranslate %}
+      </button>
+    </form>
+  </div>
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-header fw-bold">{% translate "Resumen" %}</div>
+      <ul class="list-group list-group-flush">
+        {% for item in carrito.items %}
+        <li class="list-group-item d-flex justify-content-between"><span>{{ item.marca }} {{ item.modelo }}</span><span>$ {{ item.precio|moneda }}</span></li>
+        {% endfor %}
+        <li class="list-group-item d-flex justify-content-between fw-bold"><span>{% translate "Total" %}</span><span>$ {{ carrito.total|moneda }} COP</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

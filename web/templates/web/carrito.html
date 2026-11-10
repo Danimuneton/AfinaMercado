@@ -1,0 +1,51 @@
+{% extends "web/base.html" %}
+{% load i18n web_extras %}
+{% block titulo %}{% translate "Carrito" %}{% endblock %}
+{% block contenido %}
+<h1 class="h3 mb-3">{% translate "Tu carrito" %}</h1>
+{% if carrito.items %}
+<div class="table-responsive">
+  <table class="table align-middle">
+    <caption class="visually-hidden">{% translate "Instrumentos en tu carrito" %}</caption>
+    <thead>
+      <tr>
+        <th scope="col">{% translate "Instrumento" %}</th>
+        <th scope="col" class="text-end">{% translate "Precio (COP)" %}</th>
+        <th scope="col" class="text-end"><span class="visually-hidden">{% translate "Acciones" %}</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in carrito.items %}
+      <tr>
+        <td><a href="{% url 'web:instrumento' item.instrumento_id %}">{{ item.marca }} {{ item.modelo }}</a></td>
+        <td class="text-end">$ {{ item.precio|moneda }}</td>
+        <td class="text-end">
+          {% translate "¿Quitar este instrumento del carrito?" as confirmar_quitar %}
+          <form method="post" action="{% url 'web:carrito_quitar' item.instrumento_id %}"
+                onsubmit="return confirm('{{ confirmar_quitar|escapejs }}');">{% csrf_token %}
+            <button type="submit" class="btn btn-sm btn-outline-danger">{% translate "Quitar" %}<span class="visually-hidden"> {{ item.marca }} {{ item.modelo }}</span></button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr class="fw-bold">
+        <td>{% translate "Total" %}</td>
+        <td class="text-end">$ {{ carrito.total|moneda }}</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<div class="d-flex flex-wrap gap-2 justify-content-end">
+  <a href="{% url 'web:catalogo' %}" class="btn btn-outline-secondary">{% translate "Seguir comprando" %}</a>
+  <a href="{% url 'web:checkout' %}" class="btn btn-warning">{% translate "Continuar con el pago" %}</a>
+</div>
+{% else %}
+<div class="text-center py-5 text-muted">
+  <p class="fs-5">{% translate "Tu carrito está vacío." %}</p>
+  <a href="{% url 'web:catalogo' %}" class="btn btn-dark">{% translate "Explorar el catálogo" %}</a>
+</div>
+{% endif %}
+{% endblock %}

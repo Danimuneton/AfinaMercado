@@ -1,0 +1,26 @@
+{% extends "web/base.html" %}
+{% load i18n %}
+{% block titulo %}{% translate "Equipo aliado" %}{% endblock %}
+{% block contenido %}
+<h1 class="h3">{% translate "Servicio del equipo aliado" %}</h1>
+<p class="text-muted">{% translate "Información que consumimos en tiempo real desde la API del equipo aliado." %}</p>
+
+{% if no_configurado %}
+<div class="alert alert-info">{% translate "El servicio del equipo aliado aún no está configurado." %}</div>
+{% elif error %}
+<div class="alert alert-warning">{% translate "El servicio del equipo aliado no respondió. El resto de AfinaMercado sigue funcionando con normalidad." %}</div>
+{% elif resultado %}
+<p><strong>{{ resultado.nombre }}</strong> · <span class="text-muted small">{{ resultado.url }}</span></p>
+{% if resultado.filas %}
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead><tr>{% for c in resultado.columnas %}<th scope="col">{{ c }}</th>{% endfor %}</tr></thead>
+    <tbody>{% for fila in resultado.filas %}<tr>{% for valor in fila %}<td>{{ valor|truncatechars:80 }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+  </table>
+</div>
+<p class="small text-muted">{% blocktranslate count total=resultado.total %}{{ total }} registro recibido.{% plural %}{{ total }} registros recibidos.{% endblocktranslate %}</p>
+{% else %}
+<p class="text-muted">{% translate "El aliado no devolvió registros." %}</p>
+{% endif %}
+{% endif %}
+{% endblock %}

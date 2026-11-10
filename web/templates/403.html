@@ -1,0 +1,10 @@
+{% extends "web/base.html" %}
+{% load i18n %}
+{% block titulo %}{% translate "Acceso denegado" %}{% endblock %}
+{% block contenido %}
+<div class="text-center py-5">
+  <p class="display-4">403</p>
+  <h1 class="h3">{% translate "No tienes permiso para ver esta página" %}</h1>
+  <a href="{% url 'web:catalogo' %}" class="btn btn-dark">{% translate "Ir al catálogo" %}</a>
+</div>
+{% endblock %}
