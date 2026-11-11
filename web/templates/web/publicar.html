@@ -1,0 +1,26 @@
+{% extends "web/base.html" %}
+{% load i18n %}
+{% block titulo %}{% translate "Publicar un instrumento" %}{% endblock %}
+{% block contenido %}
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+    <h1 class="h3">{% translate "Publicar un instrumento" %}</h1>
+    <p class="text-muted">{% translate "Los campos marcados con * son obligatorios." %}</p>
+    {% include "web/_errores_form.html" %}
+    <form method="post" novalidate data-un-envio>{% csrf_token %}
+      <div class="row">
+        <div class="col-md-6">{% include "web/_campo.html" with campo=form.marca %}</div>
+        <div class="col-md-6">{% include "web/_campo.html" with campo=form.modelo %}</div>
+        <div class="col-md-6">{% include "web/_campo.html" with campo=form.categoria %}</div>
+        <div class="col-md-6">{% include "web/_campo.html" with campo=form.estado_condicion %}</div>
+      </div>
+      {% include "web/_campo.html" with campo=form.precio_base %}
+      {% include "web/_campo.html" with campo=form.descripcion %}
+      <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-warning" data-texto-enviando="{% translate 'Publicando…' %}">{% translate "Publicar" %}</button>
+        <a href="{% url 'web:catalogo' %}" class="btn btn-outline-secondary">{% translate "Cancelar" %}</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

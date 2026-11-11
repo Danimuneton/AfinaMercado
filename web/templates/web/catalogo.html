@@ -1,0 +1,47 @@
+{% extends "web/base.html" %}
+{% load i18n %}
+{% block titulo %}{% translate "Catálogo" %}{% endblock %}
+{% block contenido %}
+<div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3">
+  <div>
+    <h1 class="h3 mb-1">{% translate "Instrumentos disponibles" %}</h1>
+    <p class="text-muted mb-0">{% translate "Compra y vende instrumentos musicales usados de forma segura." %}</p>
+  </div>
+  {% if user.is_authenticated %}
+  <a href="{% url 'web:publicar' %}" class="btn btn-warning">+ {% translate "Publicar un instrumento" %}</a>
+  {% endif %}
+</div>
+
+<form method="get" class="row g-2 align-items-end mb-4" role="search">
+  <div class="col-md-6">
+    <label class="form-label" for="{{ form.q.id_for_label }}">{{ form.q.label }}</label>
+    {{ form.q }}
+  </div>
+  <div class="col-md-4">
+    <label class="form-label" for="{{ form.categoria.id_for_label }}">{{ form.categoria.label }}</label>
+    {{ form.categoria }}
+  </div>
+  <div class="col-md-2 d-grid">
+    <button type="submit" class="btn btn-dark">{% translate "Filtrar" %}</button>
+  </div>
+  {% if filtrando %}
+  <div class="col-12"><a href="{% url 'web:catalogo' %}" class="small">{% translate "Quitar filtros" %}</a></div>
+  {% endif %}
+</form>
+
+{% if instrumentos %}
+<p class="text-muted small" aria-live="polite">
+  {% blocktranslate count total=instrumentos|length %}{{ total }} instrumento encontrado{% plural %}{{ total }} instrumentos encontrados{% endblocktranslate %}
+</p>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+  {% for i in instrumentos %}
+  <div class="col">{% include "web/_tarjeta_instrumento.html" %}</div>
+  {% endfor %}
+</div>
+{% elif not servicio_caido %}
+<div class="text-center py-5 text-muted">
+  <p class="fs-5">{% translate "No encontramos instrumentos con esos filtros." %}</p>
+  {% if filtrando %}<a href="{% url 'web:catalogo' %}" class="btn btn-outline-dark">{% translate "Ver todo el catálogo" %}</a>{% endif %}
+</div>
+{% endif %}
+{% endblock %}

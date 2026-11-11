@@ -1,0 +1,44 @@
+{% extends "web/base.html" %}
+{% load i18n web_extras %}
+{% block titulo %}{% blocktranslate with id=orden.id %}Orden #{{ id }}{% endblocktranslate %}{% endblock %}
+{% block migas %}
+<nav aria-label="{% translate 'Ruta de navegación' %}">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'web:ordenes' %}">{% translate "Mis compras" %}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">#{{ orden.id }}</li>
+  </ol>
+</nav>
+{% endblock %}
+{% block contenido %}
+<div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+  <h1 class="h3 mb-0">{% blocktranslate with id=orden.id %}Orden #{{ id }}{% endblocktranslate %}</h1>
+  <span class="badge estado-{{ orden.estado }} fs-6">{{ orden.estado|etiqueta }}</span>
+</div>
+{% if orden.estado == "cancelada" and orden.motivo_cancelacion %}
+<div class="alert alert-warning">{% translate "Motivo:" %} {{ orden.motivo_cancelacion }}</div>
+{% endif %}
+<div class="row g-4">
+  <div class="col-lg-7">
+    <table class="table">
+      <thead><tr><th scope="col">{% translate "Instrumento" %}</th><th scope="col">{% translate "Vendedor" %}</th><th scope="col" class="text-end">{% translate "Precio (COP)" %}</th></tr></thead>
+      <tbody>
+        {% for l in orden.lineas %}
+        <tr><td>{{ l.instrumento }} <small class="text-muted">· {{ l.categoria }}</small></td><td>{{ l.vendedor }}</td><td class="text-end">$ {{ l.precio_final|moneda }}</td></tr>
+        {% endfor %}
+      </tbody>
+      <tfoot><tr class="fw-bold"><td colspan="2">{% translate "Total" %}</td><td class="text-end">$ {{ orden.total|moneda }}</td></tr></tfoot>
+    </table>
+  </div>
+  <div class="col-lg-5">
+    <dl class="row">
+      <dt class="col-5">{% translate "Fecha" %}</dt><dd class="col-7">{{ orden.fecha|fecha_iso|date:"SHORT_DATETIME_FORMAT" }}</dd>
+      <dt class="col-5">{% translate "Método de pago" %}</dt><dd class="col-7">{{ orden.metodo_pago|etiqueta }}</dd>
+      {% if orden.transaccion_id %}<dt class="col-5">{% translate "Transacción" %}</dt><dd class="col-7"><code class="small">{{ orden.transaccion_id }}</code></dd>{% endif %}
+      {% if orden.envio %}
+      <dt class="col-5">{% translate "Dirección" %}</dt><dd class="col-7">{{ orden.envio.direccion }}</dd>
+      <dt class="col-5">{% translate "Envío" %}</dt><dd class="col-7">{{ orden.envio.estado|etiqueta }}{% if orden.envio.asegurado %} · <span class="badge text-bg-info">{% translate "Asegurado" %}</span>{% endif %}</dd>
+      {% endif %}
+    </dl>
+  </div>
+</div>
+{% endblock %}

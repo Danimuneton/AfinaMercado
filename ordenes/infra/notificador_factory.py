@@ -1,10 +1,13 @@
+import logging
 import os
+
+logger = logging.getLogger(__name__)
 
 
 class NotificadorConsola:
-    """Para desarrollo: solo imprime en la consola, no manda nada real."""
+    """Para desarrollo: solo escribe en el log, no manda nada real."""
     def enviar_confirmacion(self, orden_data):
-        print(f"[DEV] Orden confirmada para {orden_data['comprador']}. Total: {orden_data['total']}")
+        logger.info("[DEV] Orden confirmada para %s. Total: %s", orden_data["comprador"], orden_data["total"])
 
 
 class NotificadorEmailReal:

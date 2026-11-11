@@ -1,0 +1,42 @@
+{% extends "web/base.html" %}
+{% load i18n web_extras %}
+{% block titulo %}{% translate "Reporte de ventas" %}{% endblock %}
+{% block cabecera %}{% if not reporte and estado != "FAILURE" and estado != "UNKNOWN" %}<meta http-equiv="refresh" content="3">{% endif %}{% endblock %}
+{% block contenido %}
+<h1 class="h3">{% translate "Reporte de ventas" %}</h1>
+<p class="small text-muted">{% translate "Tarea" %}: <code>{{ tarea_id }}</code></p>
+
+{% if reporte %}
+<p class="text-muted">{% translate "Generado:" %} {{ reporte.generado_en|fecha_iso|date:"SHORT_DATETIME_FORMAT" }}</p>
+<div class="row g-3 mb-4">
+  <div class="col-md-4"><div class="card text-center"><div class="card-body"><div class="text-muted small">{% translate "Órdenes pagadas" %}</div><div class="fs-3 fw-bold">{{ reporte.total_ordenes }}</div></div></div></div>
+  <div class="col-md-4"><div class="card text-center"><div class="card-body"><div class="text-muted small">{% translate "Ingresos (COP)" %}</div><div class="fs-3 fw-bold">$ {{ reporte.ingresos_totales|moneda }}</div></div></div></div>
+  <div class="col-md-4"><div class="card text-center"><div class="card-body"><div class="text-muted small">{% translate "Ticket promedio (COP)" %}</div><div class="fs-3 fw-bold">$ {{ reporte.ticket_promedio|moneda }}</div></div></div></div>
+</div>
+<div class="row g-4">
+  <div class="col-lg-6">
+    <h2 class="h5">{% translate "Ventas por categoría" %}</h2>
+    <table class="table table-sm">
+      <thead><tr><th scope="col">{% translate "Categoría" %}</th><th scope="col" class="text-end">{% translate "Unidades" %}</th><th scope="col" class="text-end">{% translate "Ingresos (COP)" %}</th></tr></thead>
+      <tbody>{% for c in reporte.por_categoria %}<tr><td>{{ c.categoria }}</td><td class="text-end">{{ c.unidades }}</td><td class="text-end">$ {{ c.ingresos|moneda }}</td></tr>{% empty %}<tr><td colspan="3" class="text-muted">{% translate "Sin ventas todavía." %}</td></tr>{% endfor %}</tbody>
+    </table>
+  </div>
+  <div class="col-lg-6">
+    <h2 class="h5">{% translate "Ventas por método de pago" %}</h2>
+    <table class="table table-sm">
+      <thead><tr><th scope="col">{% translate "Método" %}</th><th scope="col" class="text-end">{% translate "Órdenes" %}</th><th scope="col" class="text-end">{% translate "Ingresos (COP)" %}</th></tr></thead>
+      <tbody>{% for m in reporte.por_metodo %}<tr><td>{{ m.metodo|etiqueta }}</td><td class="text-end">{{ m.ordenes }}</td><td class="text-end">$ {{ m.ingresos|moneda }}</td></tr>{% empty %}<tr><td colspan="3" class="text-muted">{% translate "Sin ventas todavía." %}</td></tr>{% endfor %}</tbody>
+    </table>
+  </div>
+</div>
+<a href="{% url 'web:reportes' %}" class="btn btn-outline-dark">{% translate "Generar otro reporte" %}</a>
+{% elif estado == "FAILURE" or estado == "UNKNOWN" %}
+<div class="alert alert-danger">{% translate "No se pudo generar el reporte. Intenta de nuevo más tarde." %}</div>
+<a href="{% url 'web:reportes' %}" class="btn btn-outline-dark">{% translate "Volver" %}</a>
+{% else %}
+<div class="d-flex align-items-center gap-3" role="status">
+  <div class="spinner-border" aria-hidden="true"></div>
+  <span>{% translate "Procesando el reporte en segundo plano… esta página se actualiza sola." %}</span>
+</div>
+{% endif %}
+{% endblock %}

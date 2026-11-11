@@ -1,0 +1,106 @@
+# Spanish translations for AfinaMercado.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the AfinaMercado
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AfinaMercado VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-10 22:36+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+msgid "Falta la cabecera X-Usuario-Id."
+msgstr "Falta la cabecera X-Usuario-Id."
+
+msgid "Escribe una dirección de al menos 5 caracteres."
+msgstr "Escribe una dirección de al menos 5 caracteres."
+
+#, python-format
+msgid "Máximo %(n)s caracteres."
+msgstr "Máximo %(n)s caracteres."
+
+msgid "Método de pago no válido."
+msgstr "Método de pago no válido."
+
+msgid "Correo no válido."
+msgstr "Correo no válido."
+
+msgid "Datos de la orden inválidos."
+msgstr "Datos de la orden inválidos."
+
+msgid "Tu carrito está vacío."
+msgstr "Tu carrito está vacío."
+
+#, python-format
+msgid "No se pudo procesar el pago: %(detalle)s"
+msgstr "No se pudo procesar el pago: %(detalle)s"
+
+#, python-format
+msgid "La orden %(id)s no existe."
+msgstr "La orden %(id)s no existe."
+
+msgid "Estado de envío no válido."
+msgstr "Estado de envío no válido."
+
+msgid "Solo se pueden enviar órdenes pagadas."
+msgstr "Solo se pueden enviar órdenes pagadas."
+
+#, python-format
+msgid "El servicio de %(servicio)s no está disponible."
+msgstr "El servicio de %(servicio)s no está disponible."
+
+msgid "Error en un servicio dependiente."
+msgstr "Error en un servicio dependiente."
+
+msgid "carrito"
+msgstr "carrito"
+
+msgid "catálogo"
+msgstr "catálogo"
+
+msgid "pagos"
+msgstr "pagos"
+
+msgid "El cuerpo de la petición debe ser un objeto JSON."
+msgstr "El cuerpo de la petición debe ser un objeto JSON."
+
+msgid "Token de servicio inválido o ausente."
+msgstr "Token de servicio inválido o ausente."
+
+msgid "Solicitud inválida."
+msgstr "Solicitud inválida."
+
+msgid "Recurso no encontrado."
+msgstr "Recurso no encontrado."
+
+msgid "Método HTTP no permitido en esta ruta."
+msgstr "Método HTTP no permitido en esta ruta."
+
+msgid "El contenido debe enviarse como JSON."
+msgstr "El contenido debe enviarse como JSON."
+
+msgid "Error en la solicitud."
+msgstr "Error en la solicitud."
+
+msgid "Ocurrió un error inesperado en el servicio."
+msgstr "Ocurrió un error inesperado en el servicio."
+
+msgid "La orden necesita un comprador."
+msgstr "La orden necesita un comprador."
+
+msgid "La orden necesita al menos una línea de compra."
+msgstr "La orden necesita al menos una línea de compra."
+
+msgid "La orden necesita una dirección de envío."
+msgstr "La orden necesita una dirección de envío."
+

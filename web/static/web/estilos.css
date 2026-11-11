@@ -1,0 +1,8 @@
+/* Estilos propios de AfinaMercado (complementan Bootstrap 5) */
+.tarjeta-instrumento { transition: transform .15s ease, box-shadow .15s ease; }
+.tarjeta-instrumento:hover, .tarjeta-instrumento:focus-within { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.12) !important; }
+.texto-largo { white-space: pre-line; }
+.badge.estado-pagada { background-color: #198754; }
+.badge.estado-creada { background-color: #6c757d; }
+.badge.estado-cancelada { background-color: #dc3545; }
+a:focus-visible, button:focus-visible, .form-control:focus, .form-select:focus { outline: 3px solid #ffc107; outline-offset: 2px; }

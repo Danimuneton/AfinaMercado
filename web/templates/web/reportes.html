@@ -1,0 +1,10 @@
+{% extends "web/base.html" %}
+{% load i18n %}
+{% block titulo %}{% translate "Reportes" %}{% endblock %}
+{% block contenido %}
+<h1 class="h3">{% translate "Reporte de ventas" %}</h1>
+<p class="text-muted">{% translate "El reporte se calcula en segundo plano (Celery + Redis), así que no bloquea la aplicación." %}</p>
+<form method="post" data-un-envio>{% csrf_token %}
+  <button type="submit" class="btn btn-dark" data-texto-enviando="{% translate 'Enviando…' %}">{% translate "Generar reporte" %}</button>
+</form>
+{% endblock %}

@@ -1,0 +1,532 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:  AfinaMercado\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-10 17:27-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: AfinaMercado\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+msgid "Español"
+msgstr "Español"
+
+msgid "Inglés"
+msgstr "Inglés"
+
+#, python-format
+msgid "El instrumento %(marca)s %(modelo)s ya no está disponible."
+msgstr "El instrumento %(marca)s %(modelo)s ya no está disponible."
+
+msgid "La orden necesita un comprador."
+msgstr "La orden necesita un comprador."
+
+msgid "La orden necesita al menos una línea de compra."
+msgstr "La orden necesita al menos una línea de compra."
+
+msgid "La orden necesita una dirección de envío."
+msgstr "La orden necesita una dirección de envío."
+
+msgid "Excelente"
+msgstr "Excelente"
+
+msgid "Bueno"
+msgstr "Bueno"
+
+msgid "Regular"
+msgstr "Regular"
+
+msgid "Disponible"
+msgstr "Disponible"
+
+msgid "Vendido"
+msgstr "Vendido"
+
+msgid "Creada"
+msgstr "Creada"
+
+msgid "Pagada"
+msgstr "Pagada"
+
+msgid "Cancelada"
+msgstr "Cancelada"
+
+msgid "Tarjeta"
+msgstr "Tarjeta"
+
+msgid "Transferencia"
+msgstr "Transferencia"
+
+msgid "Pendiente"
+msgstr "Pendiente"
+
+msgid "En camino"
+msgstr "En camino"
+
+msgid "Entregado"
+msgstr "Entregado"
+
+msgid "Interfaz web"
+msgstr "Interfaz web"
+
+msgid "Tarjeta de crédito/débito"
+msgstr "Tarjeta de crédito/débito"
+
+msgid "Transferencia bancaria"
+msgstr "Transferencia bancaria"
+
+msgid "PSE"
+msgstr "PSE"
+
+msgid "Nequi"
+msgstr "Nequi"
+
+msgid "Buscar"
+msgstr "Buscar"
+
+msgid "Marca o modelo, ej. Yamaha"
+msgstr "Marca o modelo, ej. Yamaha"
+
+msgid "Categoría"
+msgstr "Categoría"
+
+msgid "Todas las categorías"
+msgstr "Todas las categorías"
+
+msgid "Marca"
+msgstr "Marca"
+
+msgid "Modelo"
+msgstr "Modelo"
+
+msgid "Precio (COP)"
+msgstr "Precio (COP)"
+
+msgid "Precio en pesos colombianos, sin puntos ni comas."
+msgstr "Precio en pesos colombianos, sin puntos ni comas."
+
+msgid "Condición"
+msgstr "Condición"
+
+msgid "Descripción"
+msgstr "Descripción"
+
+msgid "Opcional. Cuenta el estado, accesorios incluidos, etc."
+msgstr "Opcional. Cuenta el estado, accesorios incluidos, etc."
+
+msgid "Selecciona una categoría"
+msgstr "Selecciona una categoría"
+
+msgid "Dirección de envío"
+msgstr "Dirección de envío"
+
+msgid "Ej. Calle 10 # 20-30, Medellín"
+msgstr "Ej. Calle 10 # 20-30, Medellín"
+
+msgid "Método de pago"
+msgstr "Método de pago"
+
+msgid "Correo para la confirmación"
+msgstr "Correo para la confirmación"
+
+msgid "Te enviaremos el resumen de la compra en segundo plano."
+msgstr "Te enviaremos el resumen de la compra en segundo plano."
+
+msgid "Correo electrónico"
+msgstr "Correo electrónico"
+
+msgid "Ya existe una cuenta con este correo."
+msgstr "Ya existe una cuenta con este correo."
+
+#, python-format
+msgid "El servicio de %(servicio)s no está disponible en este momento."
+msgstr "El servicio de %(servicio)s no está disponible en este momento."
+
+msgid "Error inesperado."
+msgstr "Error inesperado."
+
+msgid "carrito"
+msgstr "carrito"
+
+msgid "catálogo"
+msgstr "catálogo"
+
+msgid "órdenes"
+msgstr "órdenes"
+
+msgid "Acceso denegado"
+msgstr "Acceso denegado"
+
+msgid "No tienes permiso para ver esta página"
+msgstr "No tienes permiso para ver esta página"
+
+msgid "Ir al catálogo"
+msgstr "Ir al catálogo"
+
+msgid "Página no encontrada"
+msgstr "Página no encontrada"
+
+msgid "No encontramos lo que buscas"
+msgstr "No encontramos lo que buscas"
+
+msgid "Es posible que el enlace esté mal escrito o que el contenido ya no exista."
+msgstr "Es posible que el enlace esté mal escrito o que el contenido ya no exista."
+
+msgid "Algo salió mal de nuestro lado"
+msgstr "Algo salió mal de nuestro lado"
+
+msgid "Ya registramos el error. Intenta de nuevo en unos minutos."
+msgstr "Ya registramos el error. Intenta de nuevo en unos minutos."
+
+msgid "Revisa los campos marcados."
+msgstr "Revisa los campos marcados."
+
+msgid "Ver detalle"
+msgstr "Ver detalle"
+
+msgid "Equipo aliado"
+msgstr "Equipo aliado"
+
+msgid "Servicio del equipo aliado"
+msgstr "Servicio del equipo aliado"
+
+msgid "Información que consumimos en tiempo real desde la API del equipo aliado."
+msgstr "Información que consumimos en tiempo real desde la API del equipo aliado."
+
+msgid "El servicio del equipo aliado aún no está configurado."
+msgstr "El servicio del equipo aliado aún no está configurado."
+
+msgid ""
+"El servicio del equipo aliado no respondió. El resto de AfinaMercado sigue funcionando con "
+"normalidad."
+msgstr ""
+"El servicio del equipo aliado no respondió. El resto de AfinaMercado sigue funcionando con "
+"normalidad."
+
+#, python-format
+msgid "%(total)s registro recibido."
+msgid_plural "%(total)s registros recibidos."
+msgstr[0] "%(total)s registro recibido."
+msgstr[1] "%(total)s registros recibidos."
+
+msgid "El aliado no devolvió registros."
+msgstr "El aliado no devolvió registros."
+
+msgid "Marketplace de instrumentos"
+msgstr "Marketplace de instrumentos"
+
+msgid "Saltar al contenido"
+msgstr "Saltar al contenido"
+
+msgid "Navegación principal"
+msgstr "Navegación principal"
+
+msgid "Abrir menú"
+msgstr "Abrir menú"
+
+msgid "Catálogo"
+msgstr "Catálogo"
+
+msgid "Vender"
+msgstr "Vender"
+
+msgid "Mis publicaciones"
+msgstr "Mis publicaciones"
+
+msgid "Mis compras"
+msgstr "Mis compras"
+
+msgid "Reportes"
+msgstr "Reportes"
+
+msgid "Carrito"
+msgstr "Carrito"
+
+msgid "instrumentos en el carrito"
+msgstr "instrumentos en el carrito"
+
+#, python-format
+msgid "Hola, %(nombre)s"
+msgstr "Hola, %(nombre)s"
+
+msgid "Salir"
+msgstr "Salir"
+
+msgid "Ingresar"
+msgstr "Ingresar"
+
+msgid "Crear cuenta"
+msgstr "Crear cuenta"
+
+msgid "Idioma"
+msgstr "Idioma"
+
+msgid "Cambiar"
+msgstr "Cambiar"
+
+msgid "Cerrar"
+msgstr "Cerrar"
+
+msgid "Arquitectura de Software 2026"
+msgstr "Arquitectura de Software 2026"
+
+msgid "Tasas de cambio:"
+msgstr "Tasas de cambio:"
+
+msgid "Tu carrito"
+msgstr "Tu carrito"
+
+msgid "Instrumentos en tu carrito"
+msgstr "Instrumentos en tu carrito"
+
+msgid "Instrumento"
+msgstr "Instrumento"
+
+msgid "Acciones"
+msgstr "Acciones"
+
+msgid "¿Quitar este instrumento del carrito?"
+msgstr "¿Quitar este instrumento del carrito?"
+
+msgid "Quitar"
+msgstr "Quitar"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Seguir comprando"
+msgstr "Seguir comprando"
+
+msgid "Continuar con el pago"
+msgstr "Continuar con el pago"
+
+msgid "Tu carrito está vacío."
+msgstr "Tu carrito está vacío."
+
+msgid "Explorar el catálogo"
+msgstr "Explorar el catálogo"
+
+msgid "Instrumentos disponibles"
+msgstr "Instrumentos disponibles"
+
+msgid "Compra y vende instrumentos musicales usados de forma segura."
+msgstr "Compra y vende instrumentos musicales usados de forma segura."
+
+msgid "Publicar un instrumento"
+msgstr "Publicar un instrumento"
+
+msgid "Filtrar"
+msgstr "Filtrar"
+
+msgid "Quitar filtros"
+msgstr "Quitar filtros"
+
+#, python-format
+msgid "%(total)s instrumento encontrado"
+msgid_plural "%(total)s instrumentos encontrados"
+msgstr[0] "%(total)s instrumento encontrado"
+msgstr[1] "%(total)s instrumentos encontrados"
+
+msgid "No encontramos instrumentos con esos filtros."
+msgstr "No encontramos instrumentos con esos filtros."
+
+msgid "Ver todo el catálogo"
+msgstr "Ver todo el catálogo"
+
+msgid "Pagar"
+msgstr "Pagar"
+
+msgid "Ruta de navegación"
+msgstr "Ruta de navegación"
+
+msgid "Pago y envío"
+msgstr "Pago y envío"
+
+msgid "Procesando el pago…"
+msgstr "Procesando el pago…"
+
+#, python-format
+msgid "Pagar $ %(total)s COP"
+msgstr "Pagar $ %(total)s COP"
+
+msgid "Resumen"
+msgstr "Resumen"
+
+msgid "Vendedor"
+msgstr "Vendedor"
+
+msgid "Publicado"
+msgstr "Publicado"
+
+msgid "tasa del día"
+msgstr "tasa del día"
+
+msgid "Precio en dólares no disponible en este momento."
+msgstr "Precio en dólares no disponible en este momento."
+
+msgid "Este instrumento ya fue vendido."
+msgstr "Este instrumento ya fue vendido."
+
+msgid "Esta es una de tus publicaciones."
+msgstr "Esta es una de tus publicaciones."
+
+msgid "Agregando…"
+msgstr "Agregando…"
+
+msgid "Agregar al carrito"
+msgstr "Agregar al carrito"
+
+msgid "Inicia sesión para comprar"
+msgstr "Inicia sesión para comprar"
+
+msgid "¿No tienes cuenta?"
+msgstr "¿No tienes cuenta?"
+
+msgid "Todavía no has publicado instrumentos."
+msgstr "Todavía no has publicado instrumentos."
+
+#, python-format
+msgid "Orden #%(id)s"
+msgstr "Orden #%(id)s"
+
+msgid "Motivo:"
+msgstr "Motivo:"
+
+msgid "Fecha"
+msgstr "Fecha"
+
+msgid "Transacción"
+msgstr "Transacción"
+
+msgid "Dirección"
+msgstr "Dirección"
+
+msgid "Envío"
+msgstr "Envío"
+
+msgid "Asegurado"
+msgstr "Asegurado"
+
+msgid "Orden"
+msgstr "Orden"
+
+msgid "Estado"
+msgstr "Estado"
+
+msgid "Total (COP)"
+msgstr "Total (COP)"
+
+msgid "Aún no tienes compras."
+msgstr "Aún no tienes compras."
+
+msgid "Los campos marcados con * son obligatorios."
+msgstr "Los campos marcados con * son obligatorios."
+
+msgid "Publicando…"
+msgstr "Publicando…"
+
+msgid "Publicar"
+msgstr "Publicar"
+
+msgid "Cancelar"
+msgstr "Cancelar"
+
+msgid "¿Ya tienes cuenta?"
+msgstr "¿Ya tienes cuenta?"
+
+msgid "Reporte de ventas"
+msgstr "Reporte de ventas"
+
+msgid "Tarea"
+msgstr "Tarea"
+
+msgid "Generado:"
+msgstr "Generado:"
+
+msgid "Órdenes pagadas"
+msgstr "Órdenes pagadas"
+
+msgid "Ingresos (COP)"
+msgstr "Ingresos (COP)"
+
+msgid "Ticket promedio (COP)"
+msgstr "Ticket promedio (COP)"
+
+msgid "Ventas por categoría"
+msgstr "Ventas por categoría"
+
+msgid "Unidades"
+msgstr "Unidades"
+
+msgid "Sin ventas todavía."
+msgstr "Sin ventas todavía."
+
+msgid "Ventas por método de pago"
+msgstr "Ventas por método de pago"
+
+msgid "Método"
+msgstr "Método"
+
+msgid "Órdenes"
+msgstr "Órdenes"
+
+msgid "Generar otro reporte"
+msgstr "Generar otro reporte"
+
+msgid "No se pudo generar el reporte. Intenta de nuevo más tarde."
+msgstr "No se pudo generar el reporte. Intenta de nuevo más tarde."
+
+msgid "Volver"
+msgstr "Volver"
+
+msgid "Procesando el reporte en segundo plano… esta página se actualiza sola."
+msgstr "Procesando el reporte en segundo plano… esta página se actualiza sola."
+
+msgid "El reporte se calcula en segundo plano (Celery + Redis), así que no bloquea la aplicación."
+msgstr "El reporte se calcula en segundo plano (Celery + Redis), así que no bloquea la aplicación."
+
+msgid "Enviando…"
+msgstr "Enviando…"
+
+msgid "Generar reporte"
+msgstr "Generar reporte"
+
+msgid "El catálogo no está disponible en este momento. Intenta de nuevo en unos minutos."
+msgstr "El catálogo no está disponible en este momento. Intenta de nuevo en unos minutos."
+
+msgid "¡Tu instrumento quedó publicado!"
+msgstr "¡Tu instrumento quedó publicado!"
+
+msgid "Instrumento agregado a tu carrito."
+msgstr "Instrumento agregado a tu carrito."
+
+msgid "Instrumento eliminado del carrito."
+msgstr "Instrumento eliminado del carrito."
+
+#, python-format
+msgid "¡Compra realizada! Tu orden #%(id)s quedó pagada."
+msgstr "¡Compra realizada! Tu orden #%(id)s quedó pagada."
+
+msgid "Estamos enviando la confirmación a tu correo en segundo plano."
+msgstr "Estamos enviando la confirmación a tu correo en segundo plano."
+
+msgid "El sistema de tareas en segundo plano no está disponible."
+msgstr "El sistema de tareas en segundo plano no está disponible."
+
+msgid "Generando el reporte en segundo plano. Puedes seguir navegando."
+msgstr "Generando el reporte en segundo plano. Puedes seguir navegando."
+
+#, python-format
+msgid "¡Bienvenido a AfinaMercado, %(nombre)s!"
+msgstr "¡Bienvenido a AfinaMercado, %(nombre)s!"
+

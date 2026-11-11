@@ -1,0 +1,56 @@
+{% extends "web/base.html" %}
+{% load i18n web_extras %}
+{% block titulo %}{{ instrumento.marca }} {{ instrumento.modelo }}{% endblock %}
+{% block migas %}
+<nav aria-label="{% translate 'Ruta de navegación' %}">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'web:catalogo' %}">{% translate "Catálogo" %}</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'web:catalogo' %}?categoria={{ instrumento.categoria.id }}">{{ instrumento.categoria.nombre }}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ instrumento.marca }} {{ instrumento.modelo }}</li>
+  </ol>
+</nav>
+{% endblock %}
+{% block contenido %}
+<div class="row g-4">
+  <div class="col-lg-7">
+    <h1 class="h2">{{ instrumento.marca }} {{ instrumento.modelo }}</h1>
+    <p>
+      <span class="badge text-bg-secondary">{{ instrumento.categoria.nombre }}</span>
+      <span class="badge {% if instrumento.estado_venta == 'disponible' %}text-bg-success{% else %}text-bg-dark{% endif %}">{{ instrumento.estado_venta|etiqueta }}</span>
+    </p>
+    <dl class="row">
+      <dt class="col-sm-4">{% translate "Condición" %}</dt><dd class="col-sm-8">{{ instrumento.estado_condicion|etiqueta }}</dd>
+      <dt class="col-sm-4">{% translate "Vendedor" %}</dt><dd class="col-sm-8">{{ instrumento.vendedor.nombre }}</dd>
+      <dt class="col-sm-4">{% translate "Publicado" %}</dt><dd class="col-sm-8">{{ instrumento.creado_en|fecha_iso|date:"SHORT_DATE_FORMAT" }}</dd>
+    </dl>
+    {% if instrumento.descripcion %}
+    <h2 class="h5">{% translate "Descripción" %}</h2>
+    <p class="texto-largo">{{ instrumento.descripcion }}</p>
+    {% endif %}
+  </div>
+  <div class="col-lg-5">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <p class="display-6 fw-bold mb-0">$ {{ instrumento.precio_base|moneda }} <small class="fs-6 text-muted">COP</small></p>
+        {% if instrumento.precio_usd is not None %}
+        <p class="text-muted">≈ US$ {{ instrumento.precio_usd|moneda:2 }} <small>({% translate "tasa del día" %})</small></p>
+        {% else %}
+        <p class="text-muted small">{% translate "Precio en dólares no disponible en este momento." %}</p>
+        {% endif %}
+
+        {% if instrumento.estado_venta != "disponible" %}
+          <div class="alert alert-secondary mb-0">{% translate "Este instrumento ya fue vendido." %}</div>
+        {% elif es_propio %}
+          <div class="alert alert-info mb-0">{% translate "Esta es una de tus publicaciones." %}</div>
+        {% elif user.is_authenticated %}
+          <form method="post" action="{% url 'web:carrito_agregar' instrumento.id %}" data-un-envio>{% csrf_token %}
+            <button type="submit" class="btn btn-warning btn-lg w-100" data-texto-enviando="{% translate 'Agregando…' %}">🛒 {% translate "Agregar al carrito" %}</button>
+          </form>
+        {% else %}
+          <a class="btn btn-warning btn-lg w-100" href="{% url 'web:login' %}?next={{ request.path|urlencode }}">{% translate "Inicia sesión para comprar" %}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

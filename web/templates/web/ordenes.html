@@ -1,0 +1,37 @@
+{% extends "web/base.html" %}
+{% load i18n web_extras %}
+{% block titulo %}{% translate "Mis compras" %}{% endblock %}
+{% block contenido %}
+<h1 class="h3 mb-3">{% translate "Mis compras" %}</h1>
+{% if ordenes %}
+<div class="table-responsive">
+  <table class="table table-hover align-middle">
+    <thead>
+      <tr>
+        <th scope="col">{% translate "Orden" %}</th>
+        <th scope="col">{% translate "Fecha" %}</th>
+        <th scope="col">{% translate "Estado" %}</th>
+        <th scope="col">{% translate "Envío" %}</th>
+        <th scope="col" class="text-end">{% translate "Total (COP)" %}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for o in ordenes %}
+      <tr>
+        <td><a href="{% url 'web:orden' o.id %}">#{{ o.id }}</a></td>
+        <td>{{ o.fecha|fecha_iso|date:"SHORT_DATETIME_FORMAT" }}</td>
+        <td><span class="badge estado-{{ o.estado }}">{{ o.estado|etiqueta }}</span></td>
+        <td>{% if o.envio %}{{ o.envio.estado|etiqueta }}{% endif %}</td>
+        <td class="text-end">$ {{ o.total|moneda }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="text-center py-5 text-muted">
+  <p class="fs-5">{% translate "Aún no tienes compras." %}</p>
+  <a href="{% url 'web:catalogo' %}" class="btn btn-dark">{% translate "Explorar el catálogo" %}</a>
+</div>
+{% endif %}
+{% endblock %}

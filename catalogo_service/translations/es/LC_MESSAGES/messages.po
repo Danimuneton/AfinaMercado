@@ -1,0 +1,109 @@
+# Spanish translations for AfinaMercado.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the AfinaMercado
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AfinaMercado VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-10 22:36+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+msgid "Este campo es obligatorio."
+msgstr "Este campo es obligatorio."
+
+msgid "Debe ser un texto."
+msgstr "Debe ser un texto."
+
+#, python-format
+msgid "Máximo %(n)s caracteres."
+msgstr "Máximo %(n)s caracteres."
+
+msgid "Debe ser un número entero."
+msgstr "Debe ser un número entero."
+
+msgid "El campo 'ids' debe ser una lista no vacía."
+msgstr "El campo 'ids' debe ser una lista no vacía."
+
+msgid "Todos los ids deben ser números enteros."
+msgstr "Todos los ids deben ser números enteros."
+
+#, python-format
+msgid "El instrumento %(id)s no existe."
+msgstr "El instrumento %(id)s no existe."
+
+msgid "Datos de vendedor inválidos."
+msgstr "Datos de vendedor inválidos."
+
+msgid "Datos de categoría inválidos."
+msgstr "Datos de categoría inválidos."
+
+msgid "Ya existe una categoría con ese nombre."
+msgstr "Ya existe una categoría con ese nombre."
+
+msgid "Condición no válida."
+msgstr "Condición no válida."
+
+msgid "El precio debe ser mayor que 0."
+msgstr "El precio debe ser mayor que 0."
+
+msgid "El precio es demasiado alto."
+msgstr "El precio es demasiado alto."
+
+msgid "El precio debe ser numérico."
+msgstr "El precio debe ser numérico."
+
+msgid "El vendedor no existe."
+msgstr "El vendedor no existe."
+
+msgid "La categoría no existe."
+msgstr "La categoría no existe."
+
+msgid "Datos de instrumento inválidos."
+msgstr "Datos de instrumento inválidos."
+
+#, python-format
+msgid "Instrumentos inexistentes: %(ids)s"
+msgstr "Instrumentos inexistentes: %(ids)s"
+
+#, python-format
+msgid "Ya no están disponibles: %(nombres)s"
+msgstr "Ya no están disponibles: %(nombres)s"
+
+msgid "Instrumentos musicales disponibles para la venta"
+msgstr "Instrumentos musicales disponibles para la venta"
+
+msgid "El cuerpo de la petición debe ser un objeto JSON."
+msgstr "El cuerpo de la petición debe ser un objeto JSON."
+
+msgid "Token de servicio inválido o ausente."
+msgstr "Token de servicio inválido o ausente."
+
+msgid "Solicitud inválida."
+msgstr "Solicitud inválida."
+
+msgid "Recurso no encontrado."
+msgstr "Recurso no encontrado."
+
+msgid "Método HTTP no permitido en esta ruta."
+msgstr "Método HTTP no permitido en esta ruta."
+
+msgid "El contenido debe enviarse como JSON."
+msgstr "El contenido debe enviarse como JSON."
+
+msgid "Error en la solicitud."
+msgstr "Error en la solicitud."
+
+msgid "Ocurrió un error inesperado en el servicio."
+msgstr "Ocurrió un error inesperado en el servicio."
+
