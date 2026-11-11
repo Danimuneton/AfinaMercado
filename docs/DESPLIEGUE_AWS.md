@@ -25,7 +25,7 @@ En la consola: **EC2** → **Instances** → **Launch instances**.
 |---|---|
 | Name | `afinamercado` |
 | AMI | **Ubuntu Server 24.04 LTS** (x86_64) |
-| Instance type | **t3.medium** (2 vCPU, 4 GB RAM). El sistema tiene 9 contenedores; con `t2.micro` (1 GB) se queda sin memoria |
+| Instance type | **t3.medium** (2 vCPU, 4 GB RAM). El sistema tiene 10 contenedores; con `t2.micro` (1 GB) se queda sin memoria |
 | Key pair | **Create new key pair** → nombre `afinamercado-key`, tipo RSA, formato **.pem** → se descarga el archivo |
 | Network settings → Edit | Crear security group `afinamercado-sg` con las reglas de abajo |
 | Storage | **20 GiB** gp3 |

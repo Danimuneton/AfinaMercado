@@ -36,6 +36,7 @@ Usuario ── HTTP :80 ──▶│ Nginx (API Gateway)                        
 | `carrito_service/` | Flask | Carrito de compras |
 | `ordenes_service/` | Flask | Órdenes y envíos (Builder), coordinación de la compra |
 | `pago_service/` | Flask | Pagos |
+| `aliado_service/` | Flask | Servicio aliado **simulado** (sistema externo que consume la página `/aliado/`) |
 | `notificaciones_service/` | Celery | Notificaciones (Factory) y reportes asíncronos |
 | `nginx/` | Nginx | Configuración del API Gateway |
 | `locale/` | gettext | Traducciones de Django (es / en) |

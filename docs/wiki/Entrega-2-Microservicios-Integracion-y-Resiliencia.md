@@ -18,7 +18,7 @@ flowchart TB
     U([Usuario / navegador])
     A([Equipo aliado])
     T[(ExchangeRate-API<br/>open.er-api.com)]
-    X[(API del equipo aliado)]
+    X["aliado_simulado<br/>(sistema externo)"]
 
     subgraph AWS["AWS Academy · EC2 t3.medium · IP elástica"]
         subgraph RED["Red interna de Docker Compose"]
@@ -77,6 +77,7 @@ PostgreSQL y Redis solo son accesibles dentro de la red de Docker.
 | `flask_carrito_service` | Flask 3 | Carrito de compras por usuario | `carrito_db` |
 | `flask_ordenes_service` | Flask 3 | Órdenes, líneas, envíos (Builder), coordinación de la compra | `ordenes_db` |
 | `flask_pago_service` | Flask 3 | Procesamiento y registro de pagos (pasarela simulada) | `pagos_db` |
+| `aliado_simulado` | Flask 3 | Sistema externo que reemplaza al equipo aliado no asignado | — |
 | `notificaciones_worker` | Celery 5.5 | Notificaciones de compra (Factory) y reporte de ventas | — |
 | `redis` | Redis 7 | Message Broker y backend de resultados de Celery | — |
 | `db` | PostgreSQL 16 | Una base de datos por servicio (*database per service*) | — |
@@ -146,11 +147,18 @@ Contrato completo en [`docs/API_PUBLICA.md`](https://github.com/Danimuneton/Afin
 
 ### 4.2 Servicio a consumir (equipo aliado)
 
-Página **Equipo aliado** (`/aliado/`). La URL del aliado se configura con las variables
-`ALIADO_API_URL` y `ALIADO_NOMBRE` del `.env`, sin tocar código. El adaptador `AliadoHttpAdapter`
-(`web/integraciones/aliado.py`) acepta una lista JSON o un objeto con la lista dentro (`results`,
-`data`, `items`, ...) y la convierte en una tabla. Si el aliado no responde, la página lo informa y
-el resto del sitio sigue funcionando.
+**No se nos asignó un equipo aliado.** Para demostrar el consumo se agregó el contenedor
+`aliado_simulado` (`aliado_service/`), que hace el papel de un sistema externo: una academia de
+música ficticia ("Academia Armonía") que expone `GET /api/clases` con un JSON de formato distinto
+al nuestro (`{"proveedor": ..., "clases": [...]}`).
+
+La página **Equipo aliado** (`/aliado/`) lo consume a través de `AliadoHttpAdapter`
+(`web/integraciones/aliado.py`), que acepta una lista JSON o un objeto con la lista dentro
+(`results`, `data`, `items`, `clases`, ...) y la convierte en una tabla. Si el aliado no responde,
+la página lo informa y el resto del sitio sigue funcionando.
+
+Cuando haya un equipo aliado real, basta con poner su URL en `ALIADO_API_URL` (y su nombre en
+`ALIADO_NOMBRE`) del `.env`. No hay que cambiar código: es el mismo adaptador.
 
 ### 4.3 API de terceros con patrón Adapter (inversión de dependencias)
 
