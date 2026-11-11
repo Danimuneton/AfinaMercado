@@ -14,5 +14,6 @@ carrito_service/
 ordenes_service/
 pago_service/
 notificaciones_service/
+aliado_service/
 nginx/
 docs/

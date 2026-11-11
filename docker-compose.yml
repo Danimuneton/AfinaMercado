@@ -124,6 +124,13 @@ services:
       redis:
         condition: service_healthy
 
+  # ---------------------------------------------------------------- Sistema externo
+  # Hace el papel del equipo aliado mientras no haya uno asignado (solo red interna).
+  aliado_simulado:
+    build: ./aliado_service
+    restart: unless-stopped
+    healthcheck: *flask-healthcheck
+
   # ---------------------------------------------------------------- Django
   django_web:
     build: .
@@ -150,8 +157,9 @@ services:
       CELERY_BROKER_URL: redis://redis:6379/0
       CELERY_RESULT_BACKEND: redis://redis:6379/1
       DIVISAS_PROVEEDOR: ${DIVISAS_PROVEEDOR:-exchangerate_api}
-      ALIADO_NOMBRE: ${ALIADO_NOMBRE:-}
-      ALIADO_API_URL: ${ALIADO_API_URL:-}
+      # Si .env no define un aliado real, se usa el servicio aliado simulado.
+      ALIADO_NOMBRE: ${ALIADO_NOMBRE:-Academia Armonía (servicio aliado simulado)}
+      ALIADO_API_URL: ${ALIADO_API_URL:-http://aliado_simulado:5000/api/clases}
     depends_on:
       db:
         condition: service_healthy
